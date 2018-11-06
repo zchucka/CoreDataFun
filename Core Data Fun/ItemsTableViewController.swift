@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 class ItemsTableViewController: UITableViewController {
     
-    var category: String? = nil
-    var itemArray = [String]()
+    var category: Category? = nil
+    var itemArray = [Item]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let category = category {
-            self.navigationItem.title = "\(category) Items"
+        if let category = category, let name = category.name {
+            self.navigationItem.title = "\(name) Items"
         }
+        
+        loadItems()
     }
 
     // MARK: - Table view data source
@@ -37,7 +41,7 @@ class ItemsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
 
         let item = itemArray[indexPath.row]
-        cell.textLabel?.text = item
+        cell.textLabel?.text = item.name
 
         return cell
     }
@@ -47,8 +51,10 @@ class ItemsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            context.delete(itemArray[indexPath.row])
             itemArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            saveItems()
         }
     }
 
@@ -62,21 +68,46 @@ class ItemsTableViewController: UITableViewController {
     
     @IBAction func addBarButtonPressed(_ sender: UIBarButtonItem) {
         var alertTextField = UITextField()
-        let alert = UIAlertController(title: "Create New Category", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Create New Item", message: "", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
-            textField.placeholder = "Name of Category"
+            textField.placeholder = "Name of Item"
             alertTextField = textField
         }
         
         let action = UIAlertAction(title: "Create", style: .default) { (alertAction) in
             let text = alertTextField.text!
-            self.itemArray.append(text)
-            self.tableView.reloadData()
+            let newItem = Item(context: self.context)
+            newItem.name = text
+            newItem.parentCategory = self.category!
+            newItem.checkOff = false
+            self.itemArray.append(newItem)
+            self.saveItems()
         }
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
+    func saveItems() {
+        do {
+            try context.save()
+        } catch {
+            print("Error Saving Request")
+        }
+        self.tableView.reloadData()
+    }
+    
+    func loadItems() {
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@" , category!.name!)
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        request.predicate = categoryPredicate
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error Fetching Data")
+        }
+        self.tableView.reloadData()
+    }
 }

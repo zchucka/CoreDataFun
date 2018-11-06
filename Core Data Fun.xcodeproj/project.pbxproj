@@ -10,6 +10,8 @@
 		7B49AE402182351A00E93AD8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7B49AE3E2182351A00E93AD8 /* DataModel.xcdatamodeld */; };
 		7B49AE432182379300E93AD8 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B49AE412182379300E93AD8 /* Category+CoreDataClass.swift */; };
 		7B49AE442182379300E93AD8 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B49AE422182379300E93AD8 /* Category+CoreDataProperties.swift */; };
+		7BA6E1E021920A48003FDF43 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6E1DE21920A48003FDF43 /* Item+CoreDataClass.swift */; };
+		7BA6E1E121920A48003FDF43 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA6E1DF21920A48003FDF43 /* Item+CoreDataProperties.swift */; };
 		AEAE391C218168D200870FAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAE391B218168D200870FAD /* AppDelegate.swift */; };
 		AEAE391E218168D200870FAD /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAE391D218168D200870FAD /* CategoryViewController.swift */; };
 		AEAE3921218168D200870FAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEAE391F218168D200870FAD /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 		7B49AE3F2182351A00E93AD8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		7B49AE412182379300E93AD8 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7B49AE422182379300E93AD8 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7BA6E1DE21920A48003FDF43 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7BA6E1DF21920A48003FDF43 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AEAE3918218168D200870FAD /* Core Data Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEAE391B218168D200870FAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEAE391D218168D200870FAD /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
@@ -62,12 +66,14 @@
 		AEAE391A218168D200870FAD /* Core Data Fun */ = {
 			isa = PBXGroup;
 			children = (
+				7BA6E1DE21920A48003FDF43 /* Item+CoreDataClass.swift */,
+				7BA6E1DF21920A48003FDF43 /* Item+CoreDataProperties.swift */,
 				7B49AE412182379300E93AD8 /* Category+CoreDataClass.swift */,
 				7B49AE422182379300E93AD8 /* Category+CoreDataProperties.swift */,
 				AEAE391B218168D200870FAD /* AppDelegate.swift */,
 				AEAE391D218168D200870FAD /* CategoryViewController.swift */,
-				7B49AE3E2182351A00E93AD8 /* DataModel.xcdatamodeld */,
 				AEAE392D21816DC700870FAD /* ItemsTableViewController.swift */,
+				7B49AE3E2182351A00E93AD8 /* DataModel.xcdatamodeld */,
 				AEAE391F218168D200870FAD /* Main.storyboard */,
 				AEAE3922218168D300870FAD /* Assets.xcassets */,
 				AEAE3924218168D300870FAD /* LaunchScreen.storyboard */,
@@ -149,10 +155,12 @@
 			files = (
 				AEAE391E218168D200870FAD /* CategoryViewController.swift in Sources */,
 				7B49AE442182379300E93AD8 /* Category+CoreDataProperties.swift in Sources */,
+				7BA6E1E121920A48003FDF43 /* Item+CoreDataProperties.swift in Sources */,
 				7B49AE402182351A00E93AD8 /* DataModel.xcdatamodeld in Sources */,
 				AEAE391C218168D200870FAD /* AppDelegate.swift in Sources */,
 				7B49AE432182379300E93AD8 /* Category+CoreDataClass.swift in Sources */,
 				AEAE392E21816DC700870FAD /* ItemsTableViewController.swift in Sources */,
+				7BA6E1E021920A48003FDF43 /* Item+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
